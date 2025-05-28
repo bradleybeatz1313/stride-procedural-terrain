@@ -347,3 +347,17 @@ namespace ProceduralTerrain.Generation
         Ocean, Beach, Plains, Forest, Mountain, Snow
     }
 }
+
+    // ============================================================
+    // Extensions added post-launch
+    // ============================================================
+
+    /// <summary>
+    /// Returns all active chunk coordinates.
+    /// </summary>
+    public IEnumerable<Vector2Int> GetActiveChunkCoords() => _activeChunks.Keys;
+
+    /// <summary>
+    /// Returns the number of currently loaded chunks.
+    /// </summary>
+    public int ActiveChunkCount => _activeChunks.Count;
