@@ -300,3 +300,31 @@ namespace ProceduralTerrain.Generation
         public float ErosionWeight { get; set; } = 0.1f;
     }
 }
+
+    // ============================================================
+    // Utility
+    // ============================================================
+
+    /// <summary>
+    /// Sample raw Perlin noise at a 2D position (normalized 0-1 output).
+    /// </summary>
+    public float Sample2D(float x, float y)
+    {
+        return (Noise(x * 0.01f, y * 0.01f) + 1f) * 0.5f;
+    }
+
+    /// <summary>
+    /// Octave noise with configurable lacunarity and persistence.
+    /// </summary>
+    public float OctaveNoise(float x, float y, int octaves, float lacunarity = 2f, float persistence = 0.5f)
+    {
+        float value = 0f, amplitude = 1f, frequency = 1f, maxValue = 0f;
+        for (int i = 0; i < octaves; i++)
+        {
+            value += Noise(x * frequency, y * frequency) * amplitude;
+            maxValue += amplitude;
+            amplitude *= persistence;
+            frequency *= lacunarity;
+        }
+        return value / maxValue;
+    }
