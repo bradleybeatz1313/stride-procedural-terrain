@@ -361,3 +361,15 @@ namespace ProceduralTerrain.Generation
     /// Returns the number of currently loaded chunks.
     /// </summary>
     public int ActiveChunkCount => _activeChunks.Count;
+
+    /// <summary>
+    /// Force-reload all chunks (use after seed or config changes).
+    /// </summary>
+    public void RegenerateAll()
+    {
+        foreach (var chunk in _activeChunks.Values)
+            chunk.Entity.Scene = null;
+        _activeChunks.Clear();
+        _noise = new PerlinNoise(Seed);
+        UpdateChunks();
+    }
