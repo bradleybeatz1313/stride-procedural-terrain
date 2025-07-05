@@ -481,3 +481,17 @@ namespace ProceduralTerrain.Navigation
         public float ActualCost { get; set; }
     }
 }
+
+    // ─── Debugging Helpers ──────────────────────────────────────────
+
+    /// <summary>
+    /// Returns the current path as a read-only list of world positions.
+    /// </summary>
+    public IReadOnlyList<Vector3> CurrentPath => _currentPath ?? (IReadOnlyList<Vector3>)Array.Empty<Vector3>();
+
+    /// <summary>
+    /// Returns how far along the current path the agent is (0-1).
+    /// </summary>
+    public float PathProgress => _currentPath is { Count: > 0 }
+        ? (float)_pathIndex / _currentPath.Count
+        : 0f;
