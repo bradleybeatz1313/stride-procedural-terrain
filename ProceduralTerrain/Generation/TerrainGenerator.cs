@@ -373,3 +373,14 @@ namespace ProceduralTerrain.Generation
         _noise = new PerlinNoise(Seed);
         UpdateChunks();
     }
+
+    /// <summary>
+    /// Check whether a world position falls within a loaded chunk.
+    /// </summary>
+    public bool IsPositionLoaded(float worldX, float worldZ)
+    {
+        var coord = new Vector2Int(
+            (int)MathF.Floor(worldX / ChunkSize),
+            (int)MathF.Floor(worldZ / ChunkSize));
+        return _activeChunks.ContainsKey(coord);
+    }
