@@ -328,3 +328,21 @@ namespace ProceduralTerrain.Generation
         }
         return value / maxValue;
     }
+
+    /// <summary>
+    /// Ridged multi-fractal noise — produces sharp mountain ridges.
+    /// </summary>
+    public float RidgeNoise(float x, float y, int octaves = 4)
+    {
+        float value = 0f, amplitude = 1f, frequency = 1f, weight = 1f;
+        for (int i = 0; i < octaves; i++)
+        {
+            float signal = 1f - MathF.Abs(Noise(x * frequency, y * frequency));
+            signal *= signal * weight;
+            weight = MathF.Clamp(signal * 2f, 0f, 1f);
+            value += signal * amplitude;
+            amplitude *= 0.5f;
+            frequency *= 2f;
+        }
+        return value;
+    }
