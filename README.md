@@ -112,3 +112,13 @@ var config = new TerrainConfig
 ## 📄 License
 
 MIT
+
+---
+
+## Quick Start
+
+1. Open the solution in Visual Studio or Rider (.NET 6 SDK required)
+2. Reference the Stride engine NuGet packages (see csproj)
+3. Attach `TerrainGenerator` as a SyncScript to a root entity
+4. Set `Seed`, `ChunkSize`, and `ViewDistance` in the editor
+5. Run -- terrain streams in as the player entity moves
