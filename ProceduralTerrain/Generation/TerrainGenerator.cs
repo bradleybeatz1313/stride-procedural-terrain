@@ -384,3 +384,14 @@ namespace ProceduralTerrain.Generation
             (int)MathF.Floor(worldZ / ChunkSize));
         return _activeChunks.ContainsKey(coord);
     }
+
+    /// <summary>
+    /// Returns the biome at a world position without generating a full chunk.
+    /// </summary>
+    public BiomeType GetBiomeAt(float worldX, float worldZ)
+    {
+        float h = GetHeightAt(worldX, worldZ);
+        return ClassifyBiome(h, new Vector2Int(
+            (int)MathF.Floor(worldX / ChunkSize),
+            (int)MathF.Floor(worldZ / ChunkSize)));
+    }
