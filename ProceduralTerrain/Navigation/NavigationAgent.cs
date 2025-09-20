@@ -495,3 +495,14 @@ namespace ProceduralTerrain.Navigation
     public float PathProgress => _currentPath is { Count: > 0 }
         ? (float)_pathIndex / _currentPath.Count
         : 0f;
+
+    // ─── Pathfinding Config ──────────────────────────────────────────
+
+    /// <summary>Maximum slope angle (degrees) the agent can traverse.</summary>
+    public float MaxTraversableSlope { get; set; } = 35f;
+
+    /// <summary>Agent movement speed (units per second).</summary>
+    public float MoveSpeed { get; set; } = 5f;
+
+    /// <summary>Distance at which agent considers a waypoint reached.</summary>
+    public float WaypointReachedRadius { get; set; } = 1.5f;
