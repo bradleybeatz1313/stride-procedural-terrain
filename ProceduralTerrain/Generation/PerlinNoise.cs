@@ -346,3 +346,14 @@ namespace ProceduralTerrain.Generation
         }
         return value;
     }
+
+    /// <summary>
+    /// Domain-warped noise: perturbs sample coordinates using offset noise maps.
+    /// Produces organic, flowing terrain shapes.
+    /// </summary>
+    public float WarpedNoise(float x, float y, float warpStrength = 80f)
+    {
+        float ox = OctaveNoise(x + 1.7f, y + 9.2f, 4);
+        float oy = OctaveNoise(x + 8.3f, y + 2.8f, 4);
+        return OctaveNoise(x + warpStrength * ox, y + warpStrength * oy, 6);
+    }
