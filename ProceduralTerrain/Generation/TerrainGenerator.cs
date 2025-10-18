@@ -395,3 +395,20 @@ namespace ProceduralTerrain.Generation
             (int)MathF.Floor(worldX / ChunkSize),
             (int)MathF.Floor(worldZ / ChunkSize)));
     }
+
+    /// <summary>
+    /// Export chunk heightmap as a flat float array (row-major).
+    /// Useful for physics engine integration.
+    /// </summary>
+    public float[] ExportHeightmap(Vector2Int coord)
+    {
+        if (!_activeChunks.TryGetValue(coord, out var chunk))
+            return Array.Empty<float>();
+
+        int res = ChunkResolution + 1;
+        var flat = new float[res * res];
+        for (int z = 0; z < res; z++)
+            for (int x = 0; x < res; x++)
+                flat[z * res + x] = chunk.Heights[x, z];
+        return flat;
+    }
