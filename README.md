@@ -122,3 +122,16 @@ MIT
 3. Attach `TerrainGenerator` as a SyncScript to a root entity
 4. Set `Seed`, `ChunkSize`, and `ViewDistance` in the editor
 5. Run -- terrain streams in as the player entity moves
+
+---
+
+## Terrain Configuration
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| ChunkSize | 64 | World units per chunk |
+| ChunkResolution | 64 | Vertices per chunk edge |
+| ViewDistance | 3 | Chunks loaded in each direction |
+| Seed | 42 | RNG seed for deterministic generation |
+| Config.MaxHeight | 80f | Peak terrain height |
+| Config.Octaves | 6 | Noise octave count |
