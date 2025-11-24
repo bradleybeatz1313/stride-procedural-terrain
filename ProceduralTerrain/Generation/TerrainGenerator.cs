@@ -412,3 +412,14 @@ namespace ProceduralTerrain.Generation
                 flat[z * res + x] = chunk.Heights[x, z];
         return flat;
     }
+
+    /// <summary>
+    /// Returns the chunk containing a given world position, or null if not loaded.
+    /// </summary>
+    public TerrainChunk? GetChunkAt(float worldX, float worldZ)
+    {
+        var coord = new Vector2Int(
+            (int)MathF.Floor(worldX / ChunkSize),
+            (int)MathF.Floor(worldZ / ChunkSize));
+        return _activeChunks.TryGetValue(coord, out var c) ? c : null;
+    }
