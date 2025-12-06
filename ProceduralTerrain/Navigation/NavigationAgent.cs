@@ -506,3 +506,17 @@ namespace ProceduralTerrain.Navigation
 
     /// <summary>Distance at which agent considers a waypoint reached.</summary>
     public float WaypointReachedRadius { get; set; } = 1.5f;
+
+    /// <summary>
+    /// Returns true if the agent is currently following a path.
+    /// </summary>
+    public bool IsNavigating => _currentPath is { Count: > 0 } && _pathIndex < _currentPath.Count;
+
+    /// <summary>
+    /// Cancel the current navigation path immediately.
+    /// </summary>
+    public void StopNavigation()
+    {
+        _currentPath = null;
+        _pathIndex = 0;
+    }
