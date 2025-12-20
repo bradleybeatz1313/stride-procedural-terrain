@@ -357,3 +357,11 @@ namespace ProceduralTerrain.Generation
         float oy = OctaveNoise(x + 8.3f, y + 2.8f, 4);
         return OctaveNoise(x + warpStrength * ox, y + warpStrength * oy, 6);
     }
+
+    /// <summary>
+    /// Moisture noise used with height to determine biome via Whittaker diagram.
+    /// </summary>
+    public float MoistureNoise(float x, float y)
+    {
+        return OctaveNoise(x * 0.003f + 400f, y * 0.003f + 400f, 4, lacunarity: 2f, persistence: 0.6f);
+    }
