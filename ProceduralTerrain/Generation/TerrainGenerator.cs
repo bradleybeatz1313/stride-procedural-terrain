@@ -423,3 +423,22 @@ namespace ProceduralTerrain.Generation
             (int)MathF.Floor(worldZ / ChunkSize));
         return _activeChunks.TryGetValue(coord, out var c) ? c : null;
     }
+
+    /// <summary>
+    /// Preload all chunks within view distance synchronously.
+    /// Useful for testing or cutscene setup.
+    /// </summary>
+    public void PreloadAll()
+    {
+        UpdateChunks();
+    }
+
+    /// <summary>
+    /// Unload all chunks immediately (frees scene nodes).
+    /// </summary>
+    public void UnloadAll()
+    {
+        foreach (var chunk in _activeChunks.Values)
+            chunk.Entity.Scene = null;
+        _activeChunks.Clear();
+    }
