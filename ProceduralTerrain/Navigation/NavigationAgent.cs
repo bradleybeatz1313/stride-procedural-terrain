@@ -520,3 +520,15 @@ namespace ProceduralTerrain.Navigation
         _currentPath = null;
         _pathIndex = 0;
     }
+
+    /// <summary>
+    /// Set a new destination. Clears the existing path and requests a new one.
+    /// </summary>
+    public void SetDestination(Vector3 worldPos)
+    {
+        _destination = worldPos;
+        _pathIndex = 0;
+        RequestPath(Entity.Transform.Position, _destination);
+    }
+
+    private Vector3 _destination;
