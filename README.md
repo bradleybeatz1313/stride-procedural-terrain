@@ -135,3 +135,20 @@ MIT
 | Seed | 42 | RNG seed for deterministic generation |
 | Config.MaxHeight | 80f | Peak terrain height |
 | Config.Octaves | 6 | Noise octave count |
+
+---
+
+## Biome System
+
+Biomes are classified by normalized height:
+
+| Height Range | Biome |
+|-------------|-------|
+| < -0.1 | Ocean |
+| -0.1 to 0.05 | Beach |
+| 0.05 to 0.3 | Plains |
+| 0.3 to 0.5 | Forest |
+| 0.5 to 0.7 | Mountain |
+| > 0.7 | Snow |
+
+When MoistureNoise is combined, this expands to a full Whittaker diagram (desert, rainforest, tundra, etc.).
