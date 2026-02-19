@@ -442,3 +442,26 @@ namespace ProceduralTerrain.Generation
             chunk.Entity.Scene = null;
         _activeChunks.Clear();
     }
+
+    /// <summary>
+    /// Returns terrain height statistics for the loaded area.
+    /// </summary>
+    public (float Min, float Max, float Mean) GetHeightStats()
+    {
+        float min = float.MaxValue, max = float.MinValue, sum = 0f;
+        int count = 0;
+        foreach (var chunk in _activeChunks.Values)
+        {
+            int res = chunk.Heights.GetLength(0);
+            for (int z = 0; z < res; z++)
+                for (int x = 0; x < res; x++)
+                {
+                    float h = chunk.Heights[x, z];
+                    min = MathF.Min(min, h);
+                    max = MathF.Max(max, h);
+                    sum += h;
+                    count++;
+                }
+        }
+        return count > 0 ? (min, max, sum / count) : (0f, 0f, 0f);
+    }
