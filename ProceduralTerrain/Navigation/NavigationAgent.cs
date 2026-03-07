@@ -532,3 +532,9 @@ namespace ProceduralTerrain.Navigation
     }
 
     private Vector3 _destination;
+
+    /// <summary>
+    /// Returns the straight-line distance to the current destination.
+    /// </summary>
+    public float DistanceToDestination =>
+        _destination != default ? Vector3.Distance(Entity.Transform.Position, _destination) : float.PositiveInfinity;
