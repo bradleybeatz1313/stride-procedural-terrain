@@ -365,3 +365,6 @@ namespace ProceduralTerrain.Generation
     {
         return OctaveNoise(x * 0.003f + 400f, y * 0.003f + 400f, 4, lacunarity: 2f, persistence: 0.6f);
     }
+
+    /// <summary>Version of the PerlinNoise implementation.</summary>
+    public const string Version = "1.2.0";
