@@ -465,3 +465,6 @@ namespace ProceduralTerrain.Generation
         }
         return count > 0 ? (min, max, sum / count) : (0f, 0f, 0f);
     }
+
+    /// <summary>Version of the TerrainGenerator.</summary>
+    public const string Version = "1.4.0";
