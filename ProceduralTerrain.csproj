@@ -15,4 +15,5 @@
     <PackageReference Include="Stride.Rendering" Version="4.2.*" />
   </ItemGroup>
 
+  <!-- last updated 2026-04-28 -->
 </Project>
