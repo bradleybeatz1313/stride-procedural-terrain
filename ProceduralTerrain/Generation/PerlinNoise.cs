@@ -368,3 +368,14 @@ namespace ProceduralTerrain.Generation
 
     /// <summary>Version of the PerlinNoise implementation.</summary>
     public const string Version = "1.2.0";
+
+    /// <summary>
+    /// Crater noise: subtracts a Gaussian bell from flat terrain to simulate impact craters.
+    /// </summary>
+    public float CraterNoise(float x, float y, float cx, float cy, float radius, float depth)
+    {
+        float dx = x - cx, dy = y - cy;
+        float dist = MathF.Sqrt(dx * dx + dy * dy);
+        float t = dist / radius;
+        return -depth * MathF.Exp(-t * t * 3f);
+    }
