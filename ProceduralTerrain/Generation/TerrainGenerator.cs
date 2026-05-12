@@ -468,3 +468,17 @@ namespace ProceduralTerrain.Generation
 
     /// <summary>Version of the TerrainGenerator.</summary>
     public const string Version = "1.4.0";
+
+    /// <summary>
+    /// Returns the biome distribution across all loaded chunks.
+    /// </summary>
+    public Dictionary<BiomeType, int> GetBiomeDistribution()
+    {
+        var dist = new Dictionary<BiomeType, int>();
+        foreach (var chunk in _activeChunks.Values)
+        {
+            if (!dist.ContainsKey(chunk.Biome)) dist[chunk.Biome] = 0;
+            dist[chunk.Biome]++;
+        }
+        return dist;
+    }
