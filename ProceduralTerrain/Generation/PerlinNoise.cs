@@ -394,3 +394,21 @@ namespace ProceduralTerrain.Generation
         }
         return value;
     }
+
+    /// <summary>
+    /// Swiss noise: layered ridged noise subtracted from smooth noise,
+    /// producing erosion-like terrain with deep valleys.
+    /// </summary>
+    public float SwissNoise(float x, float y, int octaves = 6, float warp = 0.15f)
+    {
+        float value = 0f, amplitude = 1f, frequency = 1f, t = 0f;
+        for (int i = 0; i < octaves; i++)
+        {
+            float n = Noise(x * frequency + warp * t, y * frequency + warp * t);
+            value += (1f - MathF.Abs(n)) * amplitude;
+            t += value * amplitude;
+            amplitude *= 0.5f;
+            frequency *= 2f;
+        }
+        return value;
+    }
