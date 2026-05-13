@@ -379,3 +379,18 @@ namespace ProceduralTerrain.Generation
         float t = dist / radius;
         return -depth * MathF.Exp(-t * t * 3f);
     }
+
+    /// <summary>
+    /// Turbulence noise: sum of absolute octave values, creating billowy clouds.
+    /// </summary>
+    public float TurbulenceNoise(float x, float y, int octaves = 6)
+    {
+        float value = 0f, amplitude = 1f, frequency = 1f;
+        for (int i = 0; i < octaves; i++)
+        {
+            value += MathF.Abs(Noise(x * frequency, y * frequency)) * amplitude;
+            amplitude *= 0.5f;
+            frequency *= 2f;
+        }
+        return value;
+    }
