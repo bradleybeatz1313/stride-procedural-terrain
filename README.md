@@ -152,3 +152,12 @@ Biomes are classified by normalized height:
 | > 0.7 | Snow |
 
 When MoistureNoise is combined, this expands to a full Whittaker diagram (desert, rainforest, tundra, etc.).
+
+---
+
+## Performance
+
+- Chunk generation is synchronous; large `ChunkResolution` values (> 128) may cause frame hitches
+- Set `ViewDistance = 2` for smooth streaming on lower-end hardware
+- `ExportHeightmap()` allocates a flat float array -- cache the result if called frequently
+- Physics collider generation is not included in this reference implementation
