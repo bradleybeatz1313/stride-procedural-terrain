@@ -538,3 +538,15 @@ namespace ProceduralTerrain.Navigation
     /// </summary>
     public float DistanceToDestination =>
         _destination != default ? Vector3.Distance(Entity.Transform.Position, _destination) : float.PositiveInfinity;
+
+    /// <summary>Accumulated distance traveled this session.</summary>
+    public float TotalDistanceTraveled { get; private set; }
+
+    /// <summary>Number of waypoints reached this session.</summary>
+    public int WaypointsReached { get; private set; }
+
+    private void RecordWaypointReached()
+    {
+        WaypointsReached++;
+        TotalDistanceTraveled += DistanceToDestination;
+    }
