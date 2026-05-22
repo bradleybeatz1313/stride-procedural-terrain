@@ -482,3 +482,18 @@ namespace ProceduralTerrain.Generation
         }
         return dist;
     }
+
+    /// <summary>
+    /// Returns the chunk coord closest to the given world position.
+    /// </summary>
+    public Vector2Int WorldToChunk(float worldX, float worldZ)
+        => new((int)MathF.Floor(worldX / ChunkSize),
+               (int)MathF.Floor(worldZ / ChunkSize));
+
+    /// <summary>
+    /// Returns the world-space center of a chunk.
+    /// </summary>
+    public Vector3 ChunkToWorld(Vector2Int coord)
+        => new(coord.X * ChunkSize + ChunkSize * 0.5f,
+               0f,
+               coord.Y * ChunkSize + ChunkSize * 0.5f);
