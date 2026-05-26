@@ -1,0 +1,19 @@
+# .NET / Stride
+bin/
+obj/
+*.user
+*.suo
+*.cache
+.vs/
+*.ncrunchproject
+*.ncrunchsolution
+Packages/
+
+# Stride
+/Assets/cache/
+*.sdpkg.user
+log/
+
+# OS
+.DS_Store
+Thumbs.db
