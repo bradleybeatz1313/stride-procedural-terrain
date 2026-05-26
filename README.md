@@ -161,3 +161,17 @@ When MoistureNoise is combined, this expands to a full Whittaker diagram (desert
 - Set `ViewDistance = 2` for smooth streaming on lower-end hardware
 - `ExportHeightmap()` allocates a flat float array -- cache the result if called frequently
 - Physics collider generation is not included in this reference implementation
+
+---
+
+## Noise Functions
+
+| Function | Use Case |
+|----------|----------|
+| `OctaveNoise` | General heightmap terrain |
+| `RidgeNoise` | Mountain ridges and peaks |
+| `WarpedNoise` | Organic, flowing biome shapes |
+| `TurbulenceNoise` | Billowy clouds and dunes |
+| `CraterNoise` | Impact craters and basins |
+| `SwissNoise` | Erosion valleys and cliffs |
+| `MoistureNoise` | Biome moisture classification |
